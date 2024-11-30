@@ -2,6 +2,7 @@
 <model ref="r:e77a5ca4-9658-4c80-88d1-e1d819489218(fasten.assurance.demo.argument.top_level)" content="header">
   <persistence version="9" />
   <languages>
+    <use id="e8a04d94-4307-4f88-95a2-25f7c4f39437" name="com.mbeddr.formal.safety.gsn" version="3" />
     <devkit ref="7466bc49-e775-4df7-a9f3-e383173b2eee(fasten.safety.gsn.ext)" />
   </languages>
   <imports />
