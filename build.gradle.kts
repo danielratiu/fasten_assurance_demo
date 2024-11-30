@@ -15,9 +15,7 @@ plugins {
 // detect if we are in a CI build
 val ciBuild = (System.getenv("CI") != null && System.getenv("CI").toBoolean()) || project.hasProperty("forceCI") || project.hasProperty("teamcity")
 
-
-val _mpsVersion = "2023.2"
-val fastenVersion = "2023.2.2032.27ca1f0"
+val fastenVersion = "2023.2.2065.72a7705"
 val rcpRepo = if (ciBuild) "linux.rcp" else "win.rcp"
 
 configurations {
@@ -46,12 +44,6 @@ repositories {
     mavenCentral()
 }
 
-val jbrVers = "17.0.8.1-b1000.32"
-downloadJbr {
-    jbrVersion = jbrVers
-}
-
-
 val skipResolveMps = project.hasProperty("mpsHomeDir")
 val mpsHomeDir = rootProject.file(project.findProperty("mpsHomeDir")
     ?: layout.buildDirectory.dir("mps").get().asFile.path)
@@ -67,7 +59,7 @@ val resolveMps = if (skipResolveMps) {
         tasks.register("resolveMps", Copy::class) {
             dependsOn(configurations["mps"])
             from({
-                configurations["mps"].resolve().map(::zipTree)
+                configurations["mps"].resolve().map(::tarTree)
             })
             into(mpsHomeDir)
         }
@@ -75,10 +67,9 @@ val resolveMps = if (skipResolveMps) {
 
 tasks {
     withType<MpsCheck>().configureEach {
-        dependsOn(downloadJbr, resolveMps)
-        //javaLauncher = downloadJbr.flatMap { it.javaLauncher }
+        dependsOn(resolveMps)
 
-        mpsVersion = _mpsVersion
+        mpsVersion = fastenVersion
         mpsHome = mpsHomeDir
         folderMacros.put("fasten.demo.home", layout.projectDirectory)
         pluginRoots.addAll(

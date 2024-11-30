@@ -11,6 +11,10 @@
         <property id="2557074442922438158" name="escapedValue" index="19SUeA" />
       </concept>
     </language>
+    <language id="e4dd8dcd-fbfe-4e69-bcdd-b4371f25f476" name="com.fasten.base.git">
+      <concept id="9053345654769769563" name="com.fasten.base.git.structure.GitCommitHashWord" flags="ng" index="1SKMQN" />
+      <concept id="9053345654770096926" name="com.fasten.base.git.structure.GitBranchWord" flags="ng" index="1SLyFQ" />
+    </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
@@ -44,11 +48,17 @@
       </concept>
     </language>
     <language id="e8a04d94-4307-4f88-95a2-25f7c4f39437" name="com.mbeddr.formal.safety.gsn">
+      <concept id="3514655602814462718" name="com.mbeddr.formal.safety.gsn.structure.GoalStructureDoc" flags="ng" index="9kjDo">
+        <child id="3514655602814462801" name="documentation" index="9kjJR" />
+      </concept>
       <concept id="4266958635905406443" name="com.mbeddr.formal.safety.gsn.structure.Strategy" flags="ng" index="2vmxQI" />
       <concept id="4266958635905267565" name="com.mbeddr.formal.safety.gsn.structure.Goal" flags="ng" index="2vn7WC">
         <property id="9102875167979884151" name="undeveloped" index="8uqrb" />
+        <property id="5082481967878858900" name="away" index="2QdZbZ" />
+        <reference id="5082481967878858987" name="goalDefinition" index="2QdZa0" />
       </concept>
       <concept id="4266958635905267510" name="com.mbeddr.formal.safety.gsn.structure.GoalStructure" flags="ng" index="2vn7XN">
+        <child id="3514655602814221387" name="documentation" index="9lmNH" />
         <child id="4266958635905772385" name="connections" index="2vhqc$" />
         <child id="4266958635905277632" name="content" index="2vn1q5" />
       </concept>
@@ -66,7 +76,7 @@
     <property role="3GE5qa" value="" />
     <property role="TrG5h" value="_010_Top_Level" />
     <node concept="2vn7WC" id="1T09dM6bwqH" role="2vn1q5">
-      <property role="TrG5h" value="G01" />
+      <property role="TrG5h" value="G01_Top_Level" />
       <node concept="19SGf9" id="1T09dM6bwqI" role="2vnaTY">
         <node concept="19SUe$" id="1T09dM6bwqJ" role="19SJt6">
           <property role="19SUeA" value="The system is safe&#10;to operate in given&#10;ODD. " />
@@ -99,18 +109,18 @@
         <node concept="gqqVs" id="1T09dM6bws9" role="37mO4d">
           <property role="gqqTZ" value="12.0" />
           <property role="gqqTW" value="188.00049672851563" />
-          <property role="gqqTX" value="138.0" />
-          <property role="gqqTy" value="76.0" />
+          <property role="gqqTX" value="200.0" />
+          <property role="gqqTy" value="124.0" />
           <property role="TgtnS" value="1.0;0.0;0.0;1.0;0.0;0.0" />
         </node>
       </node>
       <node concept="37mRIm" id="1T09dM6bwsD" role="37mRID">
         <property role="37mO49" value="2179782749209888536" />
         <node concept="gqqVs" id="1T09dM6bwsC" role="37mO4d">
-          <property role="gqqTZ" value="168.0" />
+          <property role="gqqTZ" value="264.0" />
           <property role="gqqTW" value="188.00049672851563" />
-          <property role="gqqTX" value="110.0" />
-          <property role="gqqTy" value="76.0" />
+          <property role="gqqTX" value="174.0" />
+          <property role="gqqTy" value="92.0" />
           <property role="TgtnS" value="1.0;0.0;0.0;1.0;0.0;0.0" />
         </node>
       </node>
@@ -139,14 +149,24 @@
             <property role="2Vclpz" value="168.00039672851562" />
           </node>
           <node concept="2VclrF" id="1T09dM6bwuh" role="2Vcluh">
-            <property role="2Vclpx" value="223.00005" />
+            <property role="2Vclpx" value="317.02726327038397" />
             <property role="2Vclpz" value="168.00039672851562" />
           </node>
         </node>
       </node>
+      <node concept="37mRIm" id="Fi9JGvVOma" role="37mRID">
+        <property role="37mO49" value="779728545502938489" />
+        <node concept="gqqVs" id="Fi9JGvVOm9" role="37mO4d">
+          <property role="gqqTZ" value="299.0" />
+          <property role="gqqTW" value="-3.9998999999999967" />
+          <property role="gqqTX" value="206.0" />
+          <property role="gqqTy" value="92.0" />
+          <property role="TgtnS" value="1.0;0.0;0.0;1.0;0.0;0.0" />
+        </node>
+      </node>
     </node>
     <node concept="2vmxQI" id="1T09dM6bwrq" role="2vn1q5">
-      <property role="TrG5h" value="S01" />
+      <property role="TrG5h" value="S01_Top_Level" />
       <node concept="19SGf9" id="1T09dM6bwrr" role="2vnaTY">
         <node concept="19SUe$" id="1T09dM6bwrs" role="19SJt6">
           <property role="19SUeA" value="Argument over hazards. " />
@@ -154,34 +174,53 @@
       </node>
     </node>
     <node concept="2vn7WC" id="1T09dM6bwrT" role="2vn1q5">
-      <property role="TrG5h" value="G02" />
+      <property role="TrG5h" value="G02_Top_Level" />
       <property role="8uqrb" value="true" />
+      <property role="2QdZbZ" value="true" />
+      <ref role="2QdZa0" node="Fi9JGvVOaz" resolve="G02_Haz_Ident" />
       <node concept="19SGf9" id="1T09dM6bwrU" role="2vnaTY">
         <node concept="19SUe$" id="1T09dM6bwrV" role="19SJt6">
-          <property role="19SUeA" value="Hazard identification&#10;is sufficiently &#10;comprehensive. " />
+          <property role="19SUeA" value="Hazard identification&#10;is sufficiently comprehensive. " />
         </node>
       </node>
     </node>
     <node concept="2vn7WC" id="1T09dM6bwso" role="2vn1q5">
-      <property role="TrG5h" value="G03" />
+      <property role="TrG5h" value="G03_Top_Level" />
       <property role="8uqrb" value="true" />
+      <property role="2QdZbZ" value="true" />
+      <ref role="2QdZa0" node="Fi9JGvVO8Z" resolve="G03_Top_Level" />
       <node concept="19SGf9" id="1T09dM6bwsp" role="2vnaTY">
         <node concept="19SUe$" id="1T09dM6bwsq" role="19SJt6">
-          <property role="19SUeA" value="All identified &#10;hazards have&#10;been addressed. " />
+          <property role="19SUeA" value="All identified hazards &#10;have been addressed. " />
         </node>
       </node>
     </node>
     <node concept="3VeUTF" id="1T09dM6bwth" role="2vhqc$">
-      <ref role="3VeSjP" node="1T09dM6bwqH" resolve="G01" />
-      <ref role="3VeSjQ" node="1T09dM6bwrq" resolve="S01" />
+      <ref role="3VeSjP" node="1T09dM6bwqH" resolve="G01_Top_Level" />
+      <ref role="3VeSjQ" node="1T09dM6bwrq" resolve="S01_Top_Level" />
     </node>
     <node concept="3VeUTF" id="1T09dM6bwtI" role="2vhqc$">
-      <ref role="3VeSjP" node="1T09dM6bwrq" resolve="S01" />
-      <ref role="3VeSjQ" node="1T09dM6bwrT" resolve="G02" />
+      <ref role="3VeSjP" node="1T09dM6bwrq" resolve="S01_Top_Level" />
+      <ref role="3VeSjQ" node="1T09dM6bwrT" resolve="G02_Top_Level" />
     </node>
     <node concept="3VeUTF" id="1T09dM6bwtY" role="2vhqc$">
-      <ref role="3VeSjP" node="1T09dM6bwrq" resolve="S01" />
-      <ref role="3VeSjQ" node="1T09dM6bwso" resolve="G03" />
+      <ref role="3VeSjP" node="1T09dM6bwrq" resolve="S01_Top_Level" />
+      <ref role="3VeSjQ" node="1T09dM6bwso" resolve="G03_Top_Level" />
+    </node>
+    <node concept="9kjDo" id="Fi9JGvVOlT" role="9lmNH">
+      <node concept="19SGf9" id="Fi9JGvVOlU" role="9kjJR">
+        <node concept="19SUe$" id="Fi9JGvVOlV" role="19SJt6">
+          <property role="19SUeA" value="Top Level argument referencing&#10;two legs modeled as away goals. &#10;&#10;" />
+        </node>
+        <node concept="1SLyFQ" id="Fi9JGvVOqf" role="19SJt6" />
+        <node concept="19SUe$" id="Fi9JGvVOqx" role="19SJt6">
+          <property role="19SUeA" value=" &#10;" />
+        </node>
+        <node concept="1SKMQN" id="Fi9JGvVOqv" role="19SJt6" />
+        <node concept="19SUe$" id="Fi9JGvVOqw" role="19SJt6">
+          <property role="19SUeA" value="  " />
+        </node>
+      </node>
     </node>
   </node>
 </model>

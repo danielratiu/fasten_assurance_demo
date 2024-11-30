@@ -23,27 +23,6 @@ jobs:
     - name: Set up Gradle
       uses: gradle/actions/setup-gradle@v3
 
-    - name: Resolve MPS
-      run: |
-        xvfb-run ./gradlew resolveMps \
-          -Pgpr.user=${{github.actor}} -Pgpr.token=${{ secrets.GITHUB_TOKEN }}
-
-    - name: LS
-      run: |
-        # ls -lR * 
-        cd build/mps
-        # ls -l
-        # unzip fasten-2023.2.2032.27ca1f0.zip -d .
-        7z x fasten-2023.2.2032.27ca1f0.zip -y
-        mv fasten-2023.2.2032.27ca1f0/* .
-        # ls -lR *
-
-    - name: Patch FASTEN
-      run: |
-        chmod +x ./build/mps/bin/mps.sh
-        find ./build/mps/jbr -type f -iname "*" -exec chmod +x {} \;
-        cp ./build/mps/lib/jna/amd64/libjnidispatch.so ./build/mps/lib/jna/
-
     - name: Check Models
       run: |
         ./gradlew  \
