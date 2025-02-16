@@ -15,7 +15,7 @@ plugins {
 // detect if we are in a CI build
 val ciBuild = (System.getenv("CI") != null && System.getenv("CI").toBoolean()) || project.hasProperty("forceCI") || project.hasProperty("teamcity")
 
-val fastenVersion = "2023.2.2117.28403a9"
+val fastenVersion = "2023.2.2222.d241e80"
 val rcpRepo = if (ciBuild) "linux.rcp" else "win.rcp"
 
 configurations {
@@ -56,10 +56,12 @@ val resolveMps = if (skipResolveMps) {
             }
         }
     } else {
+        val unpacker = if (!ciBuild) ::zipTree else ::tarTree
+        
         tasks.register("resolveMps", Copy::class) {
             dependsOn(configurations["mps"])
             from({
-                configurations["mps"].resolve().map(::tarTree)
+                configurations["mps"].resolve().map(unpacker)
             })
             into(mpsHomeDir)
         }
