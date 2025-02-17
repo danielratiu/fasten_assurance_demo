@@ -1,4 +1,5 @@
 import de.itemis.mps.gradle.*
+import de.itemis.mps.gradle.tasks.MpsGenerate
 import de.itemis.mps.gradle.tasks.MpsCheck
 import de.itemis.mps.gradle.tasks.MpsMigrate
 import de.itemis.mps.gradle.tasks.Remigrate
@@ -69,8 +70,6 @@ val resolveMps = if (skipResolveMps) {
 
 tasks {
     withType<MpsCheck>().configureEach {
-        dependsOn(resolveMps)
-
         mpsVersion = fastenVersion
         mpsHome = mpsHomeDir
         folderMacros.put("fasten.demo.home", layout.projectDirectory)
@@ -81,9 +80,28 @@ tasks {
         ignoreFailures = true
         maxHeapSize = "2G"
     }
+
+    withType<MpsGenerate>().configureEach {
+        mpsVersion = fastenVersion
+        mpsHome = mpsHomeDir
+        folderMacros.put("fasten.demo.home", layout.projectDirectory)
+        /*pluginRoots.addAll(
+            layout.buildDirectory.map { buildDir ->
+                listOf("mps/plugins").map { buildDir.dir(it) }
+            })*/
+        maxHeapSize = "2G"
+    }
+}
+
+tasks.register("generateCustomChecks", MpsGenerate::class) {
+    dependsOn(resolveMps)
+    projectLocation = file(".")
+    modules = listOf("fasten.assurance.demo")
+    environmentKind = EnvironmentKind.IDEA
 }
 
 tasks.register("runFastenModelChecks", MpsCheck::class) {
+    dependsOn("generateCustomChecks")
     projectLocation = file(".")
     modules = listOf("fasten.assurance.demo")
 }
